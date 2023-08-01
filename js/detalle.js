@@ -1,6 +1,6 @@
 const getProduct = async (id) => {
 
-    const respuesta = await fetch('./productos.json')
+    const respuesta = await fetch('../productos.json')
     const data = await respuesta.json()
 
     return data.find(producto => producto.id === id)
