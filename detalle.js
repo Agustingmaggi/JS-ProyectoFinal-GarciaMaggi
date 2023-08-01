@@ -23,6 +23,7 @@ card.innerHTML = `
             <h4> Stock ${producto.stock}</h2>
             <h4> Precio ${producto.precio}</h4>
             <button id="agregarCarrito"> Agregar al carrito</button>
+            <div id="mensaje"></div>
             `
 
 const renderProd = document.getElementById('detalleProducto');
@@ -40,12 +41,18 @@ const agregarAlCarrito = (prod) => {
         if (existeIndice === -1) {
             prod.cantidad = 1
             carritoLS.push(prod)
+            mostrarMensaje("Producto agregado al carrito exitosamente.")
         } else {
             carritoLS[existeIndice].cantidad += 1
+            mostrarMensaje("Producto agregado al carrito exitosamente.")
         }
         localStorage.setItem('carrito', JSON.stringify(carritoLS))
     } else {
         producto.cantidad = 1
         localStorage.setItem('carrito', JSON.stringify([prod]))
     }
+}
+const mostrarMensaje = (mensaje) => {
+    const mensajeDiv = document.getElementById('mensaje');
+    mensajeDiv.textContent = mensaje
 }

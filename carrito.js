@@ -13,18 +13,18 @@ carrito.forEach(prod => {
     Cantidad: ${prod.cantidad} <br><br>
     Precio Unitario: $ ${prod.precio} <br><br>
     Precio Total : $ ${precioTotalPorProducto} <br><br>
-    <button id="eliminarDelCarrito"> Eliminar del carrito </button>
+    <button id="eliminarDelCarrito-${prod.id}"> Eliminar del carrito </button>
     `
     renderizarCarrito.append(prodsCart)
     prodsCart.classList.add('prodsCart')
 
+    let boton = document.querySelector(`#eliminarDelCarrito-${prod.id}`)
+    boton.addEventListener('click', () => eliminarDelCarrito(prod.nombre))
 })
-let boton = document.querySelector('#eliminarDelCarrito')
-boton.addEventListener('click', () => eliminarDelCarrito(prod))
 
 const eliminarDelCarrito = (nombreProd) => {
-    nuevoCarrito = carrito.filter(item => item.nombre !== nombreProd)
-    console.log(nuevoCarrito)
+    const producto = carrito.find((produc) => produc.nombre === nombreProd)
+    carrito.splice(carrito.indexOf(producto), 1)
     localStorage.setItem('carrito', JSON.stringify(carrito))
 }
 const total = document.createElement('p')
