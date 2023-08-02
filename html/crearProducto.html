@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    <li><a href="/">Inicio</a></li> <br><br>
+
     <form id="formulario">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required><br><br>
@@ -23,10 +25,14 @@
         <input type="number" id="precio" name="precio" required><br><br>
 
 
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Crear Producto">
+        <div id="mensaje-exito" style="display: none; color: green; font-weight: bold;">
+            El producto se ha creado con éxito! Actualiza la web para visualizarlo.
+        </div>
     </form>
     <br>
-    <li><a href="/">Inicio</a></li>
+
+    <div id="productos-container"></div>
 
     <script src="../js/funciones.js"></script>
 </body>

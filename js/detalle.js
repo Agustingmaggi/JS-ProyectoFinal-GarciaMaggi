@@ -1,9 +1,8 @@
-// const getProduct = async (id) => {
-//     const respuesta = await fetch('../productos.json')
-//     const data = await respuesta.json()
-//     return data.find(producto => producto.id === id)
-// }
-import getProduct from "./funciones.js"
+const getProduct = async (id) => {
+    const respuesta = await fetch('../productos.json')
+    const data = await respuesta.json()
+    return data.find(producto => producto.id === id)
+}
 
 const getParamURL = (param) => {
     const urlParam = new URLSearchParams(window.location.search)

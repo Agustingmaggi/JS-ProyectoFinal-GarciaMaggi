@@ -22,17 +22,34 @@ document.getElementById('formulario').addEventListener('submit', function (event
     arrayProductos.push(producto)
 
     localStorage.setItem('arrayProd', JSON.stringify(arrayProductos));
+    document.getElementById('mensaje-exito').style.display = 'block';
 
 });
 
 // Fin codigo para crear productos en Local Storage
 
-//Inicio codigo funciones de detalle.js
+// Inicio codigo para mostrar productos en Local Storage
 
-const getProduct = async (id) => {
-    const respuesta = await fetch('../productos.json')
-    const data = await respuesta.json()
-    return data.find(producto => producto.id === id)
+function mostrarProductos() {
+    const productosContainer = document.getElementById('productos-container');
+    productosContainer.innerHTML = '';
+
+    const arrayProductos = JSON.parse(localStorage.getItem('arrayProd')) || [];
+
+    arrayProductos.forEach(producto => {
+        const productoHTML = `
+            <div>
+                <h3>${producto.nombre}</h3>
+                <p>Descripción: ${producto.descripcion}</p>
+                <p>Stock: ${producto.stock}</p>
+                <p>Precio: ${producto.precio}</p>
+            </div>
+            <hr>
+        `;
+        productosContainer.innerHTML += productoHTML;
+    });
 }
 
-export default getProduct 
+mostrarProductos();
+
+// Fin codigo para mostrar productos en Local Storage
